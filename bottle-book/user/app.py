@@ -11,13 +11,9 @@ from bottle import Bottle, \
  
 
 from bottle import Bottle,response, run
-
 from pathlib import Path
-
 from bottle import TEMPLATE_PATH
-
 import psycopg2
-
 import psycopg2.extras
 
  
@@ -29,25 +25,17 @@ TEMPLATE_PATH.append(str(Path('user/views')))
 #DB接続情報
 
 DB_HOST = 'localhost'
-
 DB_PORT = '5432'
-
 DB_NAME = 'book_data'
-
 DB_USER = 'book_user'
-
-DB_PASS = '402590'
+DB_PASS = 'Ryo1207foi'
 
  
 
 def get_connection():
-
     '''
-
     DBの接続を行う
-
     '''
-
     dsn = 'host={host} port={port} dbname={dbname} \
         user={user} password={password}'
     dsn = dsn.format(user=DB_USER, password=DB_PASS, \
@@ -57,23 +45,16 @@ def get_connection():
  
 
 #Bottleアプリ利用
-
 app = Bottle()
-
 @app.route('/' , method=[ 'GET', 'POST' ])
 
  
-
 def index ():
-
     return "Hello World"
 
- 
 
 @app.route('/add', method=['GET', 'POST'])
-
 def add ( ):
-
     #ユーザー登録フォームのHTML
 
     form_html = """
@@ -294,4 +275,4 @@ def list():
 
 if __name__ == '__main__':
 
-    run (app=app, host='0.0.0.0', port=8080, reloader=True, debug=True)
+    run (app=app, host='0.0.0.0', port=8000, reloader=True, debug=True)
